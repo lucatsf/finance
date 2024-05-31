@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import TeamSwitcher from "./dashboard/components/team-switcher";
+import { MainNav } from "./dashboard/components/main-nav";
+import { Search } from "./dashboard/components/search";
+import { UserNav } from "./dashboard/components/user-nav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,8 +19,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="pt-br">
+      <body className={inter.className}>
+      <div className="border-b">
+          <div className="flex h-16 items-center px-4">
+            <TeamSwitcher />
+            <MainNav className="mx-6" />
+            <div className="ml-auto flex items-center space-x-4">
+              <Search />
+              <UserNav />
+            </div>
+          </div>
+        </div>
+        {children}
+      </body>
     </html>
   );
 }
